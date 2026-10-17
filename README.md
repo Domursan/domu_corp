@@ -23,15 +23,3 @@ Domursan/
 │   └── modules/    registry + un fichier par onglet
 └── supabase/schema.sql
 ```
-
-## Mise en ligne
-
-1. Crée un dépôt GitHub (ex. `domursan`) et pousse ce dossier à la racine.
-2. Settings → Pages → Deploy from a branch → `main` / `(root)`.
-3. Dans Supabase → Authentication → URL Configuration : mets l’adresse GitHub Pages en *Site URL* et dans *Redirect URLs*.
-
-Pour tester en local : VS Code → Live Server (les modules ES ne marchent pas en ouvrant le fichier directement).
-
-## Sécurité
-
-Connexion par email (Supabase Auth). Chaque compte ne voit que ses projets (RLS). Les fichiers et logos sont accessibles par lien direct : n’y mets rien de confidentiel, et jamais de mot de passe dans la fiche technique.
