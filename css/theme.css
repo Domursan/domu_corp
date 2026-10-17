@@ -1,0 +1,102 @@
+/* =====================================================================
+   Airpé — thèmes (nuit par défaut, jour, daltonien, saisons)
+   ===================================================================== */
+:root {
+  --accent: #3b82f6;
+  --accent-ink: #ffffff;
+  --accent-soft: color-mix(in srgb, var(--accent) 16%, transparent);
+  --accent-line: color-mix(in srgb, var(--accent) 45%, transparent);
+
+  --font: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Sora', var(--font);
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --r-s: 8px;
+  --r: 12px;
+  --r-l: 18px;
+  --sidebar-w: 264px;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+/* ---- Nuit (défaut) ---- */
+:root, [data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0a1020;
+  --bg-grad: radial-gradient(1200px 600px at 85% -10%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 60%),
+             radial-gradient(900px 500px at -10% 110%, rgba(56, 189, 248, .07), transparent 60%);
+  --sidebar: #0d1528;
+  --surface: #111a30;
+  --surface-2: #16213b;
+  --surface-3: #1c2948;
+  --border: #22314f;
+  --border-strong: #2e4068;
+  --text: #e7edf8;
+  --text-dim: #9aa8c4;
+  --text-faint: #6b7a99;
+  --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+  --shadow-s: 0 2px 10px rgba(0, 0, 0, .25);
+
+  --success: #22c55e;
+  --danger: #f05252;
+  --warning: #f59e0b;
+  --info: #38bdf8;
+  --dev: #a78bfa;
+}
+
+/* ---- Jour ---- */
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f3f6fb;
+  --bg-grad: radial-gradient(1200px 600px at 85% -10%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 60%);
+  --sidebar: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f5f8fd;
+  --surface-3: #eaf0f9;
+  --border: #dfe6f1;
+  --border-strong: #c8d3e6;
+  --text: #0f1b33;
+  --text-dim: #52627f;
+  --text-faint: #8392ad;
+  --shadow: 0 12px 32px rgba(15, 27, 51, .10);
+  --shadow-s: 0 2px 8px rgba(15, 27, 51, .06);
+
+  --success: #15803d;
+  --danger: #dc2626;
+  --warning: #b45309;
+  --info: #0369a1;
+  --dev: #7c3aed;
+}
+
+/* ---- Daltonien : bleu / orange, contrastes renforcés ---- */
+[data-colorblind="true"] {
+  --success: #3b9eff;
+  --danger: #ff8a1f;
+  --warning: #f2d024;
+  --info: #b4c7ff;
+  --border: color-mix(in srgb, var(--text) 22%, transparent);
+}
+[data-colorblind="true"][data-theme="light"] {
+  --success: #0b63c5;
+  --danger: #c2410c;
+  --warning: #8a6d00;
+}
+[data-colorblind="true"] .bar.inc { background-image: repeating-linear-gradient(45deg, transparent 0 4px, rgba(255,255,255,.25) 4px 6px); }
+
+/* ---- Particules saisonnières ---- */
+#particles {
+  position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; contain: strict;
+}
+#particles span {
+  position: absolute; top: -30px; opacity: .5;
+  animation: fall linear infinite;
+  will-change: transform;
+}
+@keyframes fall {
+  0% { transform: translate3d(0, -30px, 0) rotate(0deg); }
+  50% { transform: translate3d(28px, 50vh, 0) rotate(180deg); }
+  100% { transform: translate3d(-12px, 105vh, 0) rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  #particles { display: none; }
+  * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
