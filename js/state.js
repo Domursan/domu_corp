@@ -81,7 +81,9 @@ export async function loadSettings() {
 let saveTimer;
 export function saveSettings(immediate = false) {
   clearTimeout(saveTimer);
-  const run = () => sb.from('d_settings').upsert({ user_id: state.user.id, settings: state.settings });
+  // .then() est indispensable : une requête Supabase n'est envoyée que lorsqu'on l'attend.
+  const run = () => sb.from('d_settings').upsert({ user_id: state.user.id, settings: state.settings })
+    .then(({ error }) => { if (error) console.error('Enregistrement des paramètres impossible :', error); return { error }; });
   if (immediate) return run();
   saveTimer = setTimeout(run, 500);
 }
