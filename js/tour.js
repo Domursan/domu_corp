@@ -22,7 +22,7 @@ export function startTour(force = false) {
   const pop = ov.querySelector('.tour-pop');
   const finish = () => {
     ov.remove(); window.removeEventListener('resize', place); document.body.classList.remove('nav-open');
-    if (!state.settings.tourDone) { state.settings.tourDone = true; saveSettings(); }
+    if (!state.settings.tourDone) { state.settings.tourDone = true; saveSettings(true); }
   };
   function place() {
     const st = STEPS[i];
